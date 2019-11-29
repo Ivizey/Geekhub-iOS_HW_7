@@ -10,11 +10,110 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var groupListTableView: UITableView!
+    
+    var sections = ["Учні", "Вільні слухачі", "Вибули"]
+
+    var students = [
+        "Бондар Павло",
+        "Вождай Ігор",
+        "Демченко Михайло",
+        "Запорожець Максим",
+        "Ілюшенко Ілля",
+        "Nedopaka Alexander",
+        "Таченко Дмитро",
+        "Гуріненко Валентин"]
+    
+    var off = ["Горошнюк Вячеслав",
+            "БЕРЕЗА МАРИНА",]
+    
+    var free = ["Пухлій Віталій",
+             "Сагайдак Ілля",
+             "Шурман Андрій",
+             "Лавренко Віталій",
+             "Братчикова Дар'я",
+             "Крістіна",]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let nib = UINib(nibName: "FreeCell", bundle: nil)
+        groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
+        groupListTableView.reloadData()
     }
-
-
 }
 
+// MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return students.count
+        case 1:
+            return free.count
+        case 2:
+            return off.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StudentsCell", for: indexPath)
+            cell.textLabel?.text = students[indexPath.row]
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FreeCell", for: indexPath) as! FreeCell
+            cell.nameLabel.text = free[indexPath.row]
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OffCell", for: indexPath)
+            cell.textLabel?.text = off[indexPath.row]
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sections[section]
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .white
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textAlignment = .center
+        header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            off.append(students[indexPath.row])
+            tableView.reloadData()
+            students.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            break
+        case 1:
+            off.append(free[indexPath.row])
+            tableView.reloadData()
+            free.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            break
+        case 2:
+            off.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            print("Action")
+        }
+    }
+}
