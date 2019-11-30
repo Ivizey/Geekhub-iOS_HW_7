@@ -38,8 +38,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let nib = UINib(nibName: "FreeCell", bundle: nil)
+        groupListTableView.beginUpdates()
         groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
-        groupListTableView.reloadData()
+        groupListTableView.endUpdates()
     }
 }
 
@@ -71,6 +72,7 @@ extension ViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "FreeCell", for: indexPath) as! FreeCell
             cell.nameLabel.text = free[indexPath.row]
+            cell.overwriteButton.addTarget(self, action: #selector(buttonMethod), for: .touchUpInside)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OffCell", for: indexPath)
@@ -79,6 +81,15 @@ extension ViewController: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+    }
+    
+    @objc func buttonMethod(_ sender: UIButton) {
+        let point = sender.convert(CGPoint.zero, to: groupListTableView)
+        guard let indexPath = groupListTableView.indexPathForRow(at: point) else {return}
+        students.append(free[indexPath.row])
+        groupListTableView.reloadData()
+        free.remove(at: indexPath.row)
+        groupListTableView.deleteRows(at: [indexPath], with: .none)
     }
 }
 
@@ -101,13 +112,13 @@ extension ViewController: UITableViewDelegate {
             off.append(students[indexPath.row])
             tableView.reloadData()
             students.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .none)
             break
         case 1:
             off.append(free[indexPath.row])
             tableView.reloadData()
             free.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .none)
             break
         case 2:
             off.remove(at: indexPath.row)
