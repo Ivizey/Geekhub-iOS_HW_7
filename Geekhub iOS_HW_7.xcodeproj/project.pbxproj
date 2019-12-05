@@ -15,6 +15,7 @@
 		475881C323912A0800003E18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475881C123912A0800003E18 /* LaunchScreen.storyboard */; };
 		475881CC2391528A00003E18 /* FreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475881CA2391528A00003E18 /* FreeCell.swift */; };
 		475881CD2391528A00003E18 /* FreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475881CB2391528A00003E18 /* FreeCell.xib */; };
+		47BFDAAC23997EEB00CC6639 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAAB23997EEB00CC6639 /* AddItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		475881C423912A0800003E18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475881CA2391528A00003E18 /* FreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeCell.swift; sourceTree = "<group>"; };
 		475881CB2391528A00003E18 /* FreeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeCell.xib; sourceTree = "<group>"; };
+		47BFDAAB23997EEB00CC6639 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				475881B823912A0600003E18 /* SceneDelegate.swift */,
 				475881BA23912A0600003E18 /* ViewController.swift */,
 				475881CA2391528A00003E18 /* FreeCell.swift */,
+				47BFDAAB23997EEB00CC6639 /* AddItemView.swift */,
 				475881BC23912A0600003E18 /* Main.storyboard */,
 				475881CB2391528A00003E18 /* FreeCell.xib */,
 				475881BF23912A0800003E18 /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				475881B723912A0600003E18 /* AppDelegate.swift in Sources */,
 				475881B923912A0600003E18 /* SceneDelegate.swift in Sources */,
 				475881CC2391528A00003E18 /* FreeCell.swift in Sources */,
+				47BFDAAC23997EEB00CC6639 /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
