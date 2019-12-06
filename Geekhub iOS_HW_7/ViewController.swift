@@ -42,6 +42,10 @@ class ViewController: UIViewController {
         groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
         groupListTableView.endUpdates()
     }
+    
+    func insertItem() {
+        students.append("Aliosha")
+    }
 }
 
 // MARK: - UITableViewDataSource

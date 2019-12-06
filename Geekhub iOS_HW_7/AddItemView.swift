@@ -12,6 +12,11 @@ class AddItemView: UIViewController {
     
     @IBOutlet weak var inputTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
     @IBAction func groupSelection(_ sender: UIButton) {
         switch sender.tag {
         case 0:
