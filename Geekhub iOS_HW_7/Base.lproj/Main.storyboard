@@ -147,38 +147,37 @@
                                     <action selector="groupSelection:" destination="yQa-jB-h1L" eventType="touchUpInside" id="kvn-W9-15g"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfI-93-rhm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="6fA-JU-Lxz">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="escape" catalog="system" id="8kO-Pu-5gd"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" id="Hmz-pv-0Zp"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-ZW-6nm">
+                                <rect key="frame" x="299" y="24" width="50" height="50"/>
+                                <state key="normal" image="plus.circle" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-9I-FeQ">
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
+                                <state key="normal" image="escape" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3wq-9X-ctD" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="1ZP-Rr-KHz"/>
-                            <constraint firstItem="xfI-93-rhm" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" id="7Gt-ZT-Uid"/>
                             <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="165" id="8He-Kc-JKj"/>
                             <constraint firstItem="3wq-9X-ctD" firstAttribute="top" secondItem="1BQ-Xa-O1Y" secondAttribute="bottom" constant="52" id="Cnc-Sf-4KT"/>
                             <constraint firstItem="twR-qp-qGl" firstAttribute="centerX" secondItem="3wq-9X-ctD" secondAttribute="centerX" id="DpM-mH-9oY"/>
-                            <constraint firstItem="xfI-93-rhm" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="E08-FY-dc8"/>
                             <constraint firstItem="pcF-II-Olk" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="Hqi-JS-MwJ"/>
                             <constraint firstItem="pcF-II-Olk" firstAttribute="leading" secondItem="1BQ-Xa-O1Y" secondAttribute="trailing" constant="-90.5" id="Jag-tr-HRe"/>
                             <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="top" secondItem="pcF-II-Olk" secondAttribute="bottom" constant="28" id="PcO-j2-aDT"/>
                             <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="width" secondItem="pcF-II-Olk" secondAttribute="width" multiplier="0.455" id="TLh-BC-MME"/>
                             <constraint firstItem="pcF-II-Olk" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.533333" id="UJU-D8-XDW"/>
                             <constraint firstItem="twR-qp-qGl" firstAttribute="top" secondItem="3wq-9X-ctD" secondAttribute="bottom" constant="8" id="Xk5-7E-oJo"/>
-                            <constraint firstItem="xfI-93-rhm" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" id="rIL-9z-mbN"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="giX-S7-bA6"/>
+                            <constraint firstItem="HqG-95-c2P" firstAttribute="trailing" secondItem="GZj-ZW-6nm" secondAttribute="trailing" constant="26" id="oPL-LD-zG2"/>
+                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="V5K-9I-FeQ" secondAttribute="bottom" constant="95" id="qDZ-fW-fr5"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="leading" secondItem="HqG-95-c2P" secondAttribute="leading" constant="16" id="rji-Fa-iUi"/>
+                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="sCX-Sn-TZh"/>
                             <constraint firstItem="1Eq-mS-KfM" firstAttribute="centerX" secondItem="twR-qp-qGl" secondAttribute="centerX" id="sK3-vg-HiP"/>
+                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="24" id="vF1-Ub-OFc"/>
                             <constraint firstItem="1Eq-mS-KfM" firstAttribute="top" secondItem="twR-qp-qGl" secondAttribute="bottom" constant="8" id="vMI-br-g0N"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="20" id="zBl-6R-Gp0"/>
+                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="GZj-ZW-6nm" secondAttribute="bottom" constant="91" id="zeP-2t-HHe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HqG-95-c2P"/>
                     </view>
