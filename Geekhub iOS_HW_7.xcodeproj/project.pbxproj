@@ -16,6 +16,8 @@
 		475881CC2391528A00003E18 /* FreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475881CA2391528A00003E18 /* FreeCell.swift */; };
 		475881CD2391528A00003E18 /* FreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475881CB2391528A00003E18 /* FreeCell.xib */; };
 		47BFDAAC23997EEB00CC6639 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAAB23997EEB00CC6639 /* AddItemView.swift */; };
+		47BFDAB3239AD67400CC6639 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */; };
+		47BFDAB5239AD68700CC6639 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		475881CA2391528A00003E18 /* FreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeCell.swift; sourceTree = "<group>"; };
 		475881CB2391528A00003E18 /* FreeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeCell.xib; sourceTree = "<group>"; };
 		47BFDAAB23997EEB00CC6639 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,8 @@
 			children = (
 				475881B623912A0600003E18 /* AppDelegate.swift */,
 				475881B823912A0600003E18 /* SceneDelegate.swift */,
-				475881BA23912A0600003E18 /* ViewController.swift */,
+				47BFDAB6239AD69300CC6639 /* VC */,
 				475881CA2391528A00003E18 /* FreeCell.swift */,
-				47BFDAAB23997EEB00CC6639 /* AddItemView.swift */,
 				475881BC23912A0600003E18 /* Main.storyboard */,
 				475881CB2391528A00003E18 /* FreeCell.xib */,
 				475881BF23912A0800003E18 /* Assets.xcassets */,
@@ -74,6 +77,17 @@
 				475881C423912A0800003E18 /* Info.plist */,
 			);
 			path = "Geekhub iOS_HW_7";
+			sourceTree = "<group>";
+		};
+		47BFDAB6239AD69300CC6639 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				475881BA23912A0600003E18 /* ViewController.swift */,
+				47BFDAAB23997EEB00CC6639 /* AddItemView.swift */,
+				47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */,
+				47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BFDAB5239AD68700CC6639 /* EditDetailViewController.swift in Sources */,
+				47BFDAB3239AD67400CC6639 /* ShowDetailViewController.swift in Sources */,
 				475881BB23912A0600003E18 /* ViewController.swift in Sources */,
 				475881B723912A0600003E18 /* AppDelegate.swift in Sources */,
 				475881B923912A0600003E18 /* SceneDelegate.swift in Sources */,

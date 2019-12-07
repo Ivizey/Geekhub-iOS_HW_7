@@ -42,16 +42,27 @@ class ViewController: UIViewController {
         groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
         groupListTableView.endUpdates()
     }
-    
-    func insertItem() {
-        students.append("Aliosha")
-    }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailView = storyboard?.instantiateViewController(identifier: "ShowDetailViewController") as! ShowDetailViewController
+        switch indexPath.section {
+        case 0:
+            detailView.name = students[indexPath.row]
+        case 1:
+            detailView.name = free[indexPath.row]
+        case 2:
+            detailView.name = off[indexPath.row]
+        default:
+            print("Other list")
+        }
+        navigationController?.pushViewController(detailView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

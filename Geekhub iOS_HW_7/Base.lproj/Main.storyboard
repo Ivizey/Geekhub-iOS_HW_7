@@ -10,7 +10,7 @@
         <!--Table View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.badge.plus.fill" catalog="system" id="PRP-5p-w2h">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <segue destination="yQa-jB-h1L" kind="presentation" id="wbx-a4-ABs"/>
+                                <segue destination="yQa-jB-h1L" kind="presentation" identifier="" id="wbx-a4-ABs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -155,6 +155,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-9I-FeQ">
                                 <rect key="frame" x="16" y="20" width="50" height="50"/>
                                 <state key="normal" image="escape" catalog="system"/>
+                                <connections>
+                                    <action selector="goToRoot:" destination="yQa-jB-h1L" eventType="touchUpInside" id="xRh-3v-9Zu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -193,7 +196,7 @@
         <!--Detail View-->
         <scene sceneID="1QI-zh-lU1">
             <objects>
-                <viewController id="1gy-xX-UEL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowDetailViewController" id="1gy-xX-UEL" customClass="ShowDetailViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ndi-0Y-zEl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,10 +218,14 @@
                     <navigationItem key="navigationItem" title="Detail View" id="a52-Sb-TnA">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="IZ1-pR-I1q">
                             <connections>
-                                <segue destination="WTp-sS-vqY" kind="show" id="tXC-6h-IRU"/>
+                                <action selector="goToChange:" destination="1gy-xX-UEL" id="R4C-Gu-DZR"/>
+                                <segue destination="WTp-sS-vqY" kind="show" identifier="goToChangeName" id="tXC-6h-IRU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailLabel" destination="EOE-Cn-AQp" id="8Pz-C4-lAs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3EO-EW-xiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,7 +234,7 @@
         <!--Detail View-->
         <scene sceneID="dLO-Hc-shT">
             <objects>
-                <viewController id="WTp-sS-vqY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditDetailViewController" id="WTp-sS-vqY" customClass="EditDetailViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kky-af-DZd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,6 +242,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-59-bYm">
                                 <rect key="frame" x="326" y="67" width="20" height="22"/>
                                 <state key="normal" image="escape" catalog="system"/>
+                                <connections>
+                                    <action selector="goToRoot:" destination="WTp-sS-vqY" eventType="touchUpInside" id="EXc-a5-gOM"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FPz-fK-6qj">
                                 <rect key="frame" x="87.5" y="338.5" width="200" height="34"/>
@@ -256,6 +266,9 @@
                     <navigationItem key="navigationItem" title="Detail View" id="BEU-5K-ZqJ">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="qvL-hd-goX"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="changeNameTextField" destination="FPz-fK-6qj" id="jDn-fm-Fsk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpp-Gx-mB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

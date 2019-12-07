@@ -17,6 +17,14 @@ class AddItemView: UIViewController {
         
     }
     
+    @IBAction func goToRoot(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
     @IBAction func groupSelection(_ sender: UIButton) {
         switch sender.tag {
         case 0:
