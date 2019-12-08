@@ -12,6 +12,8 @@ class ShowDetailViewController: UIViewController {
     
     @IBOutlet weak var detailLabel: UILabel!
     var name: String!
+    var section: Int!
+    var count: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class ShowDetailViewController: UIViewController {
         if segue.identifier == "goToChangeName" {
             let vc = segue.destination as! EditDetailViewController
             vc.editText = name
+            vc.section = section
+            vc.count = count
         }
     }
 }

@@ -43,12 +43,13 @@ class ViewController: UIViewController {
         groupListTableView.endUpdates()
     }
     
+    // MARK: - Presentation modal view
     @IBAction func addItemButton(_ sender: UIBarButtonItem) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemView") as? AddItemView
-        vc?.delegate  = self
-        navigationController?.pushViewController(vc!, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemView") as! AddItemView
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -62,10 +63,16 @@ extension ViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             detailView.name = students[indexPath.row]
+            detailView.section = indexPath.section
+            detailView.count = indexPath.row
         case 1:
             detailView.name = free[indexPath.row]
+            detailView.section = indexPath.section
+            detailView.count = indexPath.row
         case 2:
             detailView.name = off[indexPath.row]
+            detailView.section = indexPath.section
+            detailView.count = indexPath.row
         default:
             print("Other list")
         }
@@ -131,7 +138,7 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            off.append(students[indexPath.row])
+            free.append(students[indexPath.row])
             tableView.reloadData()
             students.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .none)
@@ -150,8 +157,36 @@ extension ViewController: UITableViewDelegate {
         }
     }
 }
+
+//MARK: - AddItemDelegate
 extension ViewController: AddItemDelegate {
-    func addItem(item: String) {
-        print(item)
+    func addItem(item: String, section: Int) {
+        switch section {
+        case 0:
+            students.append(item)
+        case 1:
+            free.append(item)
+        case 2:
+            off.append(item)
+        default:
+            print("Other action")
+        }
+        groupListTableView.reloadData()
+    }
+}
+
+extension ViewController: EditItemDelegate {
+    func editItem(item: String, section: Int, count: Int) {
+        switch section {
+        case 0:
+            students[count] = item
+        case 1:
+            free[count] = item
+        case 2:
+            off[count] = item
+        default:
+            print("Other action")
+        }
+        groupListTableView.reloadData()
     }
 }

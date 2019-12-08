@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol EditItemDelegate {
+    func editItem(item: String, section: Int, count: Int)
+}
+
 class EditDetailViewController: UIViewController {
     
     @IBOutlet weak var changeNameTextField: UITextField!
     var editText: String!
+    var section: Int!
+    var count: Int!
+    var delegate: EditItemDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +27,9 @@ class EditDetailViewController: UIViewController {
     }
     
     @IBAction func saveChangesButton(_ sender: UIBarButtonItem) {
-        
+        guard let editItem = changeNameTextField.text, changeNameTextField.hasText else {return}
+        delegate?.editItem(item: editItem, section: section, count: count)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func goToRoot(_ sender: UIButton) {
