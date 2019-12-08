@@ -11,14 +11,12 @@ import UIKit
 class EditDetailViewController: UIViewController {
     
     @IBOutlet weak var changeNameTextField: UITextField!
-    var editText: String!
-    var section: Int!
-    var count: Int!
+    var itemArray: ItemArray!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        changeNameTextField.text = editText
+        changeNameTextField.text = itemArray.name
     }
     
     @IBAction func saveChangesButton(_ sender: UIBarButtonItem) {

@@ -11,31 +11,17 @@ import UIKit
 class ShowDetailViewController: UIViewController {
     
     @IBOutlet weak var detailLabel: UILabel!
-    var name: String!
-    var section: Int!
-    var count: Int!
+    var itemArray: ItemArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailLabel.text = name
+        detailLabel.text = itemArray.name
     }
     
     @IBAction func goToChangeName(_ sender: UIBarButtonItem) {
         let vc = storyboard?.instantiateViewController(identifier: "EditDetailViewController") as! EditDetailViewController
-        vc.editText = name
-        vc.section = section
-        vc.count = count
+        vc.itemArray = itemArray
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToChangeName" {
-//            let vc = segue.destination as! EditDetailViewController
-//            vc.editText = name
-//            vc.section = section
-//            vc.count = count
-//        }
-//    }
 }

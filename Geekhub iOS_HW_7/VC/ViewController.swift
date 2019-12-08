@@ -49,13 +49,14 @@ class ViewController: UIViewController {
     @objc func insertItemArray(notification: Notification) {
         let editVC = notification.object as! EditDetailViewController
         guard let editItem = editVC.changeNameTextField.text, editVC.changeNameTextField.hasText else {return}
-        switch editVC.section {
+        let index = editVC.itemArray.index
+        switch editVC.itemArray.section {
         case 0:
-            students[editVC.count] = editItem
+            students[index] = editItem
         case 1:
-            free[editVC.count] = editItem
+            free[index] = editItem
         case 2:
-            off[editVC.count] = editItem
+            off[index] = editItem
         default:
             print("Other action")
         }
@@ -79,22 +80,19 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView = storyboard?.instantiateViewController(identifier: "ShowDetailViewController") as! ShowDetailViewController
+        var name = String()
         switch indexPath.section {
         case 0:
-            detailView.name = students[indexPath.row]
-            detailView.section = indexPath.section
-            detailView.count = indexPath.row
+            name = students[indexPath.row]
         case 1:
-            detailView.name = free[indexPath.row]
-            detailView.section = indexPath.section
-            detailView.count = indexPath.row
+            name = free[indexPath.row]
         case 2:
-            detailView.name = off[indexPath.row]
-            detailView.section = indexPath.section
-            detailView.count = indexPath.row
+            name = off[indexPath.row]
         default:
             print("Other list")
         }
+        let itemArray = ItemArray(name: name, section: indexPath.section, index: indexPath.row)
+        detailView.itemArray = itemArray
         navigationController?.pushViewController(detailView, animated: true)
     }
     
