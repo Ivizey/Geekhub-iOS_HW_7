@@ -8,21 +8,25 @@
 
 import UIKit
 
+protocol AddItemDelegate {
+    func addItem(item: String)
+}
+
 class AddItemView: UIViewController {
     
-    @IBOutlet weak var inputTextField: UITextField!
+    var delegate: AddItemDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    @IBOutlet weak var inputTextField: UITextField!
     
     @IBAction func goToRoot(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func addItemInListButton(_ sender: UIButton) {
         
+        guard let item = inputTextField.text, inputTextField.hasText else {return}
+        delegate?.addItem(item: item)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func groupSelection(_ sender: UIButton) {

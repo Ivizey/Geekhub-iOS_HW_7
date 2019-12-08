@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var groupListTableView: UITableView!
     
     var sections = ["Учні", "Вільні слухачі", "Вибули"]
@@ -42,6 +42,13 @@ class ViewController: UIViewController {
         groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
         groupListTableView.endUpdates()
     }
+    
+    @IBAction func addItemButton(_ sender: UIBarButtonItem) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemView") as? AddItemView
+        vc?.delegate  = self
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -141,5 +148,10 @@ extension ViewController: UITableViewDelegate {
         default:
             print("Action")
         }
+    }
+}
+extension ViewController: AddItemDelegate {
+    func addItem(item: String) {
+        print(item)
     }
 }

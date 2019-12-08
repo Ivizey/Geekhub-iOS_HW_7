@@ -19,6 +19,10 @@ class EditDetailViewController: UIViewController {
         changeNameTextField.text = editText
     }
     
+    @IBAction func saveChangesButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBAction func goToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }

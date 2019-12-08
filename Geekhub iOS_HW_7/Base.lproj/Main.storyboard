@@ -89,7 +89,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.badge.plus.fill" catalog="system" id="PRP-5p-w2h">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <segue destination="yQa-jB-h1L" kind="presentation" identifier="" id="wbx-a4-ABs"/>
+                                <action selector="addItemButton:" destination="BYZ-38-t0r" id="iZH-8g-c4m"/>
+                                <segue destination="yQa-jB-h1L" kind="presentation" identifier="addItemSegue" id="wbx-a4-ABs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -105,12 +106,12 @@
         <!--Add Item View-->
         <scene sceneID="tsY-MH-so5">
             <objects>
-                <viewController id="yQa-jB-h1L" customClass="AddItemView" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddItemView" id="yQa-jB-h1L" customClass="AddItemView" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2uL-Cl-i55">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcF-II-Olk">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введіть ім'я" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcF-II-Olk">
                                 <rect key="frame" x="87.5" y="165" width="200" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -151,6 +152,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-ZW-6nm">
                                 <rect key="frame" x="299" y="24" width="50" height="50"/>
                                 <state key="normal" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="addItemInListButton:" destination="yQa-jB-h1L" eventType="touchUpInside" id="lx7-EO-6fS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-9I-FeQ">
                                 <rect key="frame" x="16" y="20" width="50" height="50"/>
@@ -218,7 +222,6 @@
                     <navigationItem key="navigationItem" title="Detail View" id="a52-Sb-TnA">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="IZ1-pR-I1q">
                             <connections>
-                                <action selector="goToChange:" destination="1gy-xX-UEL" id="R4C-Gu-DZR"/>
                                 <segue destination="WTp-sS-vqY" kind="show" identifier="goToChangeName" id="tXC-6h-IRU"/>
                             </connections>
                         </barButtonItem>
@@ -264,7 +267,11 @@
                         <viewLayoutGuide key="safeArea" id="HA5-Sw-qAk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail View" id="BEU-5K-ZqJ">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="qvL-hd-goX"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="qvL-hd-goX">
+                            <connections>
+                                <action selector="saveChangesButton:" destination="WTp-sS-vqY" id="4bI-JY-GAp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="changeNameTextField" destination="FPz-fK-6qj" id="jDn-fm-Fsk"/>

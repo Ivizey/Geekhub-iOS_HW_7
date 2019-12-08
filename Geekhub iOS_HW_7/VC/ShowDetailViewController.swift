@@ -18,10 +18,6 @@ class ShowDetailViewController: UIViewController {
         
         detailLabel.text = name
     }
-
-    @IBAction func goToChange(_ sender: UIBarButtonItem) {
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToChangeName" {
