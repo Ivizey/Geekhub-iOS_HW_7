@@ -21,12 +21,21 @@ class ShowDetailViewController: UIViewController {
         detailLabel.text = name
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToChangeName" {
-            let vc = segue.destination as! EditDetailViewController
-            vc.editText = name
-            vc.section = section
-            vc.count = count
-        }
+    @IBAction func goToChangeName(_ sender: UIBarButtonItem) {
+        let vc = storyboard?.instantiateViewController(identifier: "EditDetailViewController") as! EditDetailViewController
+        vc.editText = name
+        vc.section = section
+        vc.count = count
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToChangeName" {
+//            let vc = segue.destination as! EditDetailViewController
+//            vc.editText = name
+//            vc.section = section
+//            vc.count = count
+//        }
+//    }
 }

@@ -41,6 +41,25 @@ class ViewController: UIViewController {
         groupListTableView.beginUpdates()
         groupListTableView.register(nib, forCellReuseIdentifier: "FreeCell")
         groupListTableView.endUpdates()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(insertItemArray), name: NSNotification.Name(rawValue: "editName"), object: nil)
+    }
+    
+    //MARK: - Edit item in array's
+    @objc func insertItemArray(notification: Notification) {
+        let editVC = notification.object as! EditDetailViewController
+        guard let editItem = editVC.changeNameTextField.text, editVC.changeNameTextField.hasText else {return}
+        switch editVC.section {
+        case 0:
+            students[editVC.count] = editItem
+        case 1:
+            free[editVC.count] = editItem
+        case 2:
+            off[editVC.count] = editItem
+        default:
+            print("Other action")
+        }
+        groupListTableView.reloadData()
     }
     
     // MARK: - Presentation modal view
@@ -168,22 +187,6 @@ extension ViewController: AddItemDelegate {
             free.append(item)
         case 2:
             off.append(item)
-        default:
-            print("Other action")
-        }
-        groupListTableView.reloadData()
-    }
-}
-
-extension ViewController: EditItemDelegate {
-    func editItem(item: String, section: Int, count: Int) {
-        switch section {
-        case 0:
-            students[count] = item
-        case 1:
-            free[count] = item
-        case 2:
-            off[count] = item
         default:
             print("Other action")
         }
