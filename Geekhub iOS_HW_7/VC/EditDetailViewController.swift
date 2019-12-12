@@ -9,22 +9,29 @@
 import UIKit
 
 class EditDetailViewController: UIViewController {
-    
-    @IBOutlet weak var changeNameTextField: UITextField!
+
+    @IBOutlet weak private var changeNameTextField: UITextField!
     var itemArray: ItemArray!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         changeNameTextField.text = itemArray.name
     }
-    
-    @IBAction func saveChangesButton(_ sender: UIBarButtonItem) {
+    func getTextFromTetField() -> String {
+        if let text = changeNameTextField.text, changeNameTextField.hasText {
+            return text
+        } else {
+            return ""
+        }
+    }
+
+    @IBAction private func saveChangesButton(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editName"), object: self)
         navigationController?.popToRootViewController(animated: true)
     }
-    
-    @IBAction func goToRoot(_ sender: UIButton) {
+
+    @IBAction private func goToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
 }

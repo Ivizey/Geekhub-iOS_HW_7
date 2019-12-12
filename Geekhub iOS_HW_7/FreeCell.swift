@@ -9,8 +9,13 @@
 import UIKit
 
 class FreeCell: UITableViewCell {
-    
-    @IBOutlet weak var overwriteButton: UIButton!
-    @IBOutlet weak var nameLabel: UILabel!
-    
+
+    @IBOutlet private weak var overwriteButton: UIButton!
+    @IBOutlet private weak var nameLabel: UILabel!
+    func setNameLabel(name: String) {
+        nameLabel.text = name
+    }
+    func getTaskOverWriteButton() -> UIButton {
+        return overwriteButton
+    }
 }

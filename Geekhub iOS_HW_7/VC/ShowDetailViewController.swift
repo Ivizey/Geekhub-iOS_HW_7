@@ -9,19 +9,21 @@
 import UIKit
 
 class ShowDetailViewController: UIViewController {
-    
-    @IBOutlet weak var detailLabel: UILabel!
+
+    @IBOutlet weak private var detailLabel: UILabel!
     var itemArray: ItemArray!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         detailLabel.text = itemArray.name
     }
-    
-    @IBAction func goToChangeName(_ sender: UIBarButtonItem) {
-        let vc = storyboard?.instantiateViewController(identifier: "EditDetailViewController") as! EditDetailViewController
-        vc.itemArray = itemArray
-        navigationController?.pushViewController(vc, animated: true)
+
+    @IBAction private func goToChangeName(_ sender: UIBarButtonItem) {
+        guard let editDetailViewController = storyboard?
+            .instantiateViewController(identifier: "EditDetailViewController") as?
+            EditDetailViewController else { return }
+        editDetailViewController.itemArray = itemArray
+        navigationController?.pushViewController(editDetailViewController, animated: true)
     }
 }

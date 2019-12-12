@@ -100,6 +100,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 475881C723912A0800003E18 /* Build configuration list for PBXNativeTarget "Geekhub iOS_HW_7" */;
 			buildPhases = (
+				47E90E3123A256E3001F1BB5 /* ShellScript */,
 				475881AF23912A0600003E18 /* Sources */,
 				475881B023912A0600003E18 /* Frameworks */,
 				475881B123912A0600003E18 /* Resources */,
@@ -159,6 +160,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47E90E3123A256E3001F1BB5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		475881AF23912A0600003E18 /* Sources */ = {

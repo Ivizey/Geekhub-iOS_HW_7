@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zkg-pO-ZRK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zkg-pO-ZRK">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="102"/>
+            <point key="canvasLocation" x="466" y="102"/>
         </scene>
         <!--Add Item View-->
         <scene sceneID="tsY-MH-so5">
@@ -115,38 +115,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Додати в ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BQ-Xa-O1Y">
-                                <rect key="frame" x="87" y="227" width="91" height="21"/>
+                                <rect key="frame" x="142" y="227" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wq-9X-ctD">
-                                <rect key="frame" x="170" y="300" width="35" height="34"/>
-                                <state key="normal" title="Учні">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="groupSelection:" destination="yQa-jB-h1L" eventType="touchUpInside" id="kBI-aX-sNu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twR-qp-qGl">
-                                <rect key="frame" x="129.5" y="342" width="116" height="34"/>
-                                <state key="normal" title="Вільні слухачі">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="groupSelection:" destination="yQa-jB-h1L" eventType="touchUpInside" id="bch-2q-aYp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Eq-mS-KfM">
-                                <rect key="frame" x="156.5" y="384" width="62" height="34"/>
-                                <state key="normal" title="Вибули">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="groupSelection:" destination="yQa-jB-h1L" eventType="touchUpInside" id="kvn-W9-15g"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-ZW-6nm">
                                 <rect key="frame" x="299" y="24" width="50" height="50"/>
                                 <state key="normal" image="plus.circle" catalog="system"/>
@@ -161,42 +134,44 @@
                                     <action selector="goToRoot:" destination="yQa-jB-h1L" eventType="touchUpInside" id="xRh-3v-9Zu"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLU-Gq-d9y">
+                                <rect key="frame" x="0.0" y="271" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yQa-jB-h1L" id="ve4-Ww-sH4"/>
+                                    <outlet property="delegate" destination="yQa-jB-h1L" id="gen-Z0-CAx"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3wq-9X-ctD" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="1ZP-Rr-KHz"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="165" id="8He-Kc-JKj"/>
-                            <constraint firstItem="3wq-9X-ctD" firstAttribute="top" secondItem="1BQ-Xa-O1Y" secondAttribute="bottom" constant="52" id="Cnc-Sf-4KT"/>
-                            <constraint firstItem="twR-qp-qGl" firstAttribute="centerX" secondItem="3wq-9X-ctD" secondAttribute="centerX" id="DpM-mH-9oY"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="Hqi-JS-MwJ"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="leading" secondItem="1BQ-Xa-O1Y" secondAttribute="trailing" constant="-90.5" id="Jag-tr-HRe"/>
-                            <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="top" secondItem="pcF-II-Olk" secondAttribute="bottom" constant="28" id="PcO-j2-aDT"/>
-                            <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="width" secondItem="pcF-II-Olk" secondAttribute="width" multiplier="0.455" id="TLh-BC-MME"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.533333" id="UJU-D8-XDW"/>
-                            <constraint firstItem="twR-qp-qGl" firstAttribute="top" secondItem="3wq-9X-ctD" secondAttribute="bottom" constant="8" id="Xk5-7E-oJo"/>
-                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="giX-S7-bA6"/>
-                            <constraint firstItem="HqG-95-c2P" firstAttribute="trailing" secondItem="GZj-ZW-6nm" secondAttribute="trailing" constant="26" id="oPL-LD-zG2"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="V5K-9I-FeQ" secondAttribute="bottom" constant="95" id="qDZ-fW-fr5"/>
-                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="leading" secondItem="HqG-95-c2P" secondAttribute="leading" constant="16" id="rji-Fa-iUi"/>
-                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="sCX-Sn-TZh"/>
-                            <constraint firstItem="1Eq-mS-KfM" firstAttribute="centerX" secondItem="twR-qp-qGl" secondAttribute="centerX" id="sK3-vg-HiP"/>
-                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="24" id="vF1-Ub-OFc"/>
-                            <constraint firstItem="1Eq-mS-KfM" firstAttribute="top" secondItem="twR-qp-qGl" secondAttribute="bottom" constant="8" id="vMI-br-g0N"/>
-                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="20" id="zBl-6R-Gp0"/>
-                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="GZj-ZW-6nm" secondAttribute="bottom" constant="91" id="zeP-2t-HHe"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="0PC-Uc-V66"/>
+                            <constraint firstItem="uLU-Gq-d9y" firstAttribute="top" secondItem="1BQ-Xa-O1Y" secondAttribute="bottom" constant="23" id="0gO-wF-tSn"/>
+                            <constraint firstItem="HqG-95-c2P" firstAttribute="trailing" secondItem="GZj-ZW-6nm" secondAttribute="trailing" constant="26" id="4GX-E7-Lyn"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="leading" secondItem="HqG-95-c2P" secondAttribute="leading" constant="16" id="AfQ-PX-nDs"/>
+                            <constraint firstItem="pcF-II-Olk" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.533333" id="DRQ-6U-R7V"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="height" secondItem="2uL-Cl-i55" secondAttribute="height" multiplier="0.0749625" id="Hvu-CO-DIF"/>
+                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.133333" id="MZc-O8-Zmn"/>
+                            <constraint firstItem="pcF-II-Olk" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="Rj8-gM-b7g"/>
+                            <constraint firstItem="uLU-Gq-d9y" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" id="W0c-wB-N0S"/>
+                            <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="width" secondItem="2uL-Cl-i55" secondAttribute="width" multiplier="0.242667" id="a3d-nq-r72"/>
+                            <constraint firstItem="uLU-Gq-d9y" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="jnT-1Z-ApE"/>
+                            <constraint firstItem="pcF-II-Olk" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="165" id="lGu-Yx-QS6"/>
+                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="24" id="lOx-VM-RXM"/>
+                            <constraint firstItem="GZj-ZW-6nm" firstAttribute="height" secondItem="2uL-Cl-i55" secondAttribute="height" multiplier="0.0749625" id="nIV-2V-Rtb"/>
+                            <constraint firstItem="V5K-9I-FeQ" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="20" id="o2E-t3-yA0"/>
+                            <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="top" secondItem="HqG-95-c2P" secondAttribute="top" constant="227" id="pOX-Oc-MTw"/>
+                            <constraint firstItem="1BQ-Xa-O1Y" firstAttribute="centerX" secondItem="HqG-95-c2P" secondAttribute="centerX" id="sLG-aR-MzV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HqG-95-c2P"/>
                     </view>
                     <connections>
-                        <outlet property="freeButton" destination="twR-qp-qGl" id="f2i-d7-uuE"/>
+                        <outlet property="choiceStudents" destination="uLU-Gq-d9y" id="FZz-wW-Jei"/>
                         <outlet property="inputTextField" destination="pcF-II-Olk" id="qZ4-jK-796"/>
-                        <outlet property="offButton" destination="1Eq-mS-KfM" id="vUX-xF-kJ0"/>
-                        <outlet property="studentButton" destination="3wq-9X-ctD" id="KUr-wV-WR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jux-g5-ghL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1444" y="-305"/>
+            <point key="canvasLocation" x="1098" y="100"/>
         </scene>
         <!--Detail View-->
         <scene sceneID="1QI-zh-lU1">
@@ -233,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3EO-EW-xiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1444" y="458"/>
+            <point key="canvasLocation" x="1726" y="101"/>
         </scene>
         <!--Detail View-->
         <scene sceneID="dLO-Hc-shT">
@@ -280,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpp-Gx-mB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2350" y="457"/>
+            <point key="canvasLocation" x="2359" y="101"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X9V-mw-nW7">

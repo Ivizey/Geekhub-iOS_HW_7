@@ -8,50 +8,57 @@
 
 import UIKit
 
-protocol AddItemDelegate {
+protocol AddItemDelegate: AnyObject {
     func addItem(item: String, section: Int)
 }
 
 class AddItemView: UIViewController {
-    
-    var delegate: AddItemDelegate?
-    var checkGroup: Int?
-    
-    @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var studentButton: UIButton!
-    @IBOutlet weak var freeButton: UIButton!
-    @IBOutlet weak var offButton: UIButton!
-    
-    @IBAction func goToRoot(_ sender: UIButton) {
+
+    weak var delegate: AddItemDelegate?
+    private var sectionSelection = 0
+    private var sections: [String]!
+
+    @IBOutlet private weak var inputTextField: UITextField!
+    @IBOutlet private weak var choiceStudents: UIPickerView!
+    @IBAction private func goToRoot(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func addItemInListButton(_ sender: UIButton) {
-        
-        guard let item = inputTextField.text, inputTextField.hasText else {return}
-        if let checkGroup = checkGroup {
-            delegate?.addItem(item: item, section: checkGroup)
-            dismiss(animated: true, completion: nil)
-        }
+    func specifySections(sections: [String]) {
+        self.sections = sections
     }
-    
-    @IBAction func groupSelection(_ sender: UIButton) {
-        switch sender.tag {
+
+    @IBAction private func addItemInListButton(_ sender: UIButton) {
+        guard let item = inputTextField.text, inputTextField.hasText else { return }
+        delegate?.addItem(item: item, section: sectionSelection)
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UIPickerViewDataSource
+extension AddItemView: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        sections.count
+    }
+}
+
+// MARK: - UIPickerViewDelegate
+extension AddItemView: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        sections[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch row {
         case 0:
-            checkGroup = 0
-            freeButton.setImage(nil, for: .normal)
-            offButton.setImage(nil, for: .normal)
+            sectionSelection = 0
         case 1:
-            checkGroup = 1
-            studentButton.setImage(nil, for: .normal)
-            offButton.setImage(nil, for: .normal)
+            sectionSelection = 1
         case 2:
-            checkGroup = 2
-            freeButton.setImage(nil, for: .normal)
-            studentButton.setImage(nil, for: .normal)
+            sectionSelection = 2
         default:
             print("Other section")
         }
-        sender.setImage(UIImage(named: "logo"), for: .normal)
     }
 }
