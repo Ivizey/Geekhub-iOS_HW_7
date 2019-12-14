@@ -12,7 +12,7 @@ protocol AddItemDelegate: AnyObject {
     func addItem(item: String, section: Int)
 }
 
-class AddItemView: UIViewController {
+class AddItemViewController: UIViewController {
 
     weak var delegate: AddItemDelegate?
     private var sectionSelection = 0
@@ -35,7 +35,7 @@ class AddItemView: UIViewController {
 }
 
 // MARK: - UIPickerViewDataSource
-extension AddItemView: UIPickerViewDataSource {
+extension AddItemViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -45,7 +45,7 @@ extension AddItemView: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension AddItemView: UIPickerViewDelegate {
+extension AddItemViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         sections[row]
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class StudentsViewController: UIViewController {
 
     @IBOutlet weak private var groupListTableView: UITableView!
 
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(insertItemArray),
-                                               name: NSNotification.Name(rawValue: "editName"),
+                                               name: NSNotification.Name(rawValue: "changeANameInTheList"),
                                                object: nil)
     }
 
@@ -68,7 +68,8 @@ class ViewController: UIViewController {
     // MARK: - Presentation modal view
     @IBAction private func addItemButton(_ sender: UIBarButtonItem) {
         guard let addViewController = storyboard?
-            .instantiateViewController(withIdentifier: "AddItemView") as? AddItemView else { return }
+            .instantiateViewController(withIdentifier: "AddItemViewController") as?
+            AddItemViewController else { return }
         addViewController.specifySections(sections: sections)
         addViewController.delegate = self
         addViewController.modalPresentationStyle = .automatic
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension StudentsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -151,7 +152,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
+extension StudentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sections[section]
     }
@@ -171,7 +172,7 @@ extension ViewController: UITableViewDelegate {
             free.append(students[indexPath.row])
             tableView.reloadData()
             students.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .none)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         case 1:
             off.append(free[indexPath.row])
             tableView.reloadData()
@@ -187,7 +188,7 @@ extension ViewController: UITableViewDelegate {
 }
 
 // MARK: - AddItemDelegate
-extension ViewController: AddItemDelegate {
+extension StudentsViewController: AddItemDelegate {
     func addItem(item: String, section: Int) {
         switch section {
         case 0:

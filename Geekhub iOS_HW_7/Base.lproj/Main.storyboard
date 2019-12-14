@@ -10,7 +10,7 @@
         <!--Table View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StudentsViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="466" y="102"/>
         </scene>
-        <!--Add Item View-->
+        <!--Add Item View Controller-->
         <scene sceneID="tsY-MH-so5">
             <objects>
-                <viewController storyboardIdentifier="AddItemView" id="yQa-jB-h1L" customClass="AddItemView" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddItemViewController" id="yQa-jB-h1L" customClass="AddItemViewController" customModule="Geekhub_iOS_HW_7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2uL-Cl-i55">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

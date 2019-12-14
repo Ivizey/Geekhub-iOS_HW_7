@@ -27,7 +27,7 @@ class EditDetailViewController: UIViewController {
     }
 
     @IBAction private func saveChangesButton(_ sender: UIBarButtonItem) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editName"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeANameInTheList"), object: self)
         navigationController?.popToRootViewController(animated: true)
     }
 
