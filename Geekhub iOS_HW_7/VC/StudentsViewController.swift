@@ -75,7 +75,7 @@ class StudentsViewController: UIViewController {
         addViewController.modalPresentationStyle = .automatic
         present(addViewController, animated: true, completion: nil)
     }
-    // MARK: - Move item in table
+    // FIXMEs - method
     @objc func moveItem(_ sender: UIButton) {
         let point = sender.convert(CGPoint.zero, to: groupListTableView)
         guard let indexPath = groupListTableView.indexPathForRow(at: point) else { return }
@@ -166,6 +166,7 @@ extension StudentsViewController: UITableViewDelegate {
         header.textLabel?.textAlignment = .center
         header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
     }
+    // FIXMEs - дублікати
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
@@ -174,14 +175,14 @@ extension StudentsViewController: UITableViewDelegate {
             free.append(students[indexPath.row])
             students.remove(at: indexPath.row)
             tableView.beginUpdates()
-            tableView.insertRows(at: [IndexPath(row: free.count - 1, section: indexPath.section + 1)], with: .right)
+            tableView.insertRows(at: [IndexPath(row: indexPath.row - 1, section: indexPath.section + 1)], with: .right)
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
         case 1:
             off.append(free[indexPath.row])
             free.remove(at: indexPath.row)
             tableView.beginUpdates()
-            tableView.insertRows(at: [IndexPath(row: off.count - 1, section: indexPath.section + 1)], with: .right)
+            tableView.insertRows(at: [IndexPath(row: indexPath.row - 1, section: indexPath.section + 1)], with: .right)
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
         case 2:
