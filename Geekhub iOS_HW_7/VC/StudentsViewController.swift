@@ -80,9 +80,12 @@ class StudentsViewController: UIViewController {
         let point = sender.convert(CGPoint.zero, to: groupListTableView)
         guard let indexPath = groupListTableView.indexPathForRow(at: point) else { return }
         students.append(free[indexPath.row])
-        groupListTableView.reloadData()
         free.remove(at: indexPath.row)
-        groupListTableView.deleteRows(at: [indexPath], with: .none)
+        groupListTableView.beginUpdates()
+        groupListTableView.insertRows(at: [IndexPath(row: students.count - 1,
+                                                     section: indexPath.section - 1)], with: .bottom)
+        groupListTableView.deleteRows(at: [indexPath], with: .top)
+        groupListTableView.endUpdates()
     }
 }
 
@@ -163,27 +166,24 @@ extension StudentsViewController: UITableViewDelegate {
         header.textLabel?.textAlignment = .center
         header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
     }
-    // MARK: - delete row
-    fileprivate func moveItemArray(indexPath: IndexPath) {
-        free.append(students[indexPath.row])
-        students.remove(at: indexPath.row)
-        groupListTableView.beginUpdates()
-        groupListTableView.insertRows(at: [IndexPath(row: free.count - 1,
-                                                     section: indexPath.section + 1)], with: .right)
-        groupListTableView.deleteRows(at: [indexPath], with: .left)
-        groupListTableView.endUpdates()
-    }
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            moveItemArray(indexPath: indexPath)
+            free.append(students[indexPath.row])
+            students.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.insertRows(at: [IndexPath(row: free.count - 1, section: indexPath.section + 1)], with: .right)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
         case 1:
             off.append(free[indexPath.row])
-            tableView.reloadData()
             free.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.insertRows(at: [IndexPath(row: off.count - 1, section: indexPath.section + 1)], with: .right)
             tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
         case 2:
             off.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
