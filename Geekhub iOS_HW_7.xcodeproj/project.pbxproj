@@ -19,6 +19,7 @@
 		47BFDAB3239AD67400CC6639 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */; };
 		47BFDAB5239AD68700CC6639 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */; };
 		47CFEA6C239D62100000DE00 /* ItemArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFEA6B239D62100000DE00 /* ItemArray.swift */; };
+		47D0E8C423A65A290048CD1F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D0E8C323A65A290048CD1F /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
 		47CFEA6B239D62100000DE00 /* ItemArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemArray.swift; sourceTree = "<group>"; };
+		47D0E8C323A65A290048CD1F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				47BFDAAB23997EEB00CC6639 /* AddItemViewController.swift */,
 				47BFDAB2239AD67400CC6639 /* ShowDetailViewController.swift */,
 				47BFDAB4239AD68700CC6639 /* EditDetailViewController.swift */,
+				47D0E8C323A65A290048CD1F /* AboutViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				47BFDAB5239AD68700CC6639 /* EditDetailViewController.swift in Sources */,
 				47BFDAB3239AD67400CC6639 /* ShowDetailViewController.swift in Sources */,
 				475881BB23912A0600003E18 /* StudentsViewController.swift in Sources */,
+				47D0E8C423A65A290048CD1F /* AboutViewController.swift in Sources */,
 				475881B723912A0600003E18 /* AppDelegate.swift in Sources */,
 				475881B923912A0600003E18 /* SceneDelegate.swift in Sources */,
 				475881CC2391528A00003E18 /* FreeCell.swift in Sources */,

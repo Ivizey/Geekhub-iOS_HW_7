@@ -163,24 +163,30 @@ extension StudentsViewController: UITableViewDelegate {
         header.textLabel?.textAlignment = .center
         header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
     }
-
+    // MARK: - delete row
+    fileprivate func moveItemArray(indexPath: IndexPath) {
+        free.append(students[indexPath.row])
+        students.remove(at: indexPath.row)
+        groupListTableView.beginUpdates()
+        groupListTableView.insertRows(at: [IndexPath(row: free.count - 1,
+                                                     section: indexPath.section + 1)], with: .right)
+        groupListTableView.deleteRows(at: [indexPath], with: .left)
+        groupListTableView.endUpdates()
+    }
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            free.append(students[indexPath.row])
-            tableView.reloadData()
-            students.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            moveItemArray(indexPath: indexPath)
         case 1:
             off.append(free[indexPath.row])
             tableView.reloadData()
             free.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .none)
+            tableView.deleteRows(at: [indexPath], with: .left)
         case 2:
             off.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .left)
         default:
             print("Action")
         }
