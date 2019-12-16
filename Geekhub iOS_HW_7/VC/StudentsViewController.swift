@@ -60,7 +60,7 @@ class StudentsViewController: UIViewController {
         case 2:
             off[index] = editItem
         default:
-            print("Other action")
+            return
         }
         groupListTableView.reloadData()
     }
@@ -75,13 +75,12 @@ class StudentsViewController: UIViewController {
         addViewController.modalPresentationStyle = .automatic
         present(addViewController, animated: true, completion: nil)
     }
-    // FIXMEs - method
     @objc func moveItem(_ sender: UIButton) {
         let point = sender.convert(CGPoint.zero, to: groupListTableView)
         guard let indexPath = groupListTableView.indexPathForRow(at: point) else { return }
+        groupListTableView.beginUpdates()
         students.append(free[indexPath.row])
         free.remove(at: indexPath.row)
-        groupListTableView.beginUpdates()
         groupListTableView.insertRows(at: [IndexPath(row: students.count - 1,
                                                      section: indexPath.section - 1)], with: .bottom)
         groupListTableView.deleteRows(at: [indexPath], with: .top)
@@ -108,7 +107,7 @@ extension StudentsViewController: UITableViewDataSource {
         case 2:
             name = off[indexPath.row]
         default:
-            print("Other list")
+            return
         }
         let itemArray = ItemArray(name: name, section: indexPath.section, index: indexPath.row)
         detailView.itemArray = itemArray
@@ -166,31 +165,25 @@ extension StudentsViewController: UITableViewDelegate {
         header.textLabel?.textAlignment = .center
         header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
     }
-    // FIXMEs - дублікати
     func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
         switch indexPath.section {
         case 0:
             free.append(students[indexPath.row])
             students.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.insertRows(at: [IndexPath(row: indexPath.row - 1, section: indexPath.section + 1)], with: .right)
-            tableView.deleteRows(at: [indexPath], with: .left)
-            tableView.endUpdates()
+            tableView.insertRows(at: [IndexPath(row: free.count - 1, section: indexPath.section + 1)], with: .right)
         case 1:
             off.append(free[indexPath.row])
             free.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.insertRows(at: [IndexPath(row: indexPath.row - 1, section: indexPath.section + 1)], with: .right)
-            tableView.deleteRows(at: [indexPath], with: .left)
-            tableView.endUpdates()
+            tableView.insertRows(at: [IndexPath(row: off.count - 1, section: indexPath.section + 1)], with: .right)
         case 2:
             off.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
         default:
-            print("Action")
+            return
         }
+        tableView.deleteRows(at: [indexPath], with: .left)
+        tableView.endUpdates()
     }
 }
 
@@ -205,7 +198,7 @@ extension StudentsViewController: AddItemDelegate {
         case 2:
             off.append(item)
         default:
-            print("Other action")
+            return
         }
         groupListTableView.reloadData()
     }
