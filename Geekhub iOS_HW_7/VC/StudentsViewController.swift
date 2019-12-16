@@ -47,6 +47,17 @@ class StudentsViewController: UIViewController {
                                                object: nil)
     }
 
+    // MARK: - Presentation modal view
+    @IBAction private func addItemButton(_ sender: UIBarButtonItem) {
+        guard let addViewController = storyboard?
+            .instantiateViewController(withIdentifier: "AddItemViewController") as?
+            AddItemViewController else { return }
+        addViewController.specifySections(sections: sections)
+        addViewController.delegate = self
+        addViewController.modalPresentationStyle = .automatic
+        present(addViewController, animated: true, completion: nil)
+    }
+
     // MARK: - Edit item in array's
     @objc func insertItemArray(notification: Notification) {
         guard let editViewController = notification.object as? EditDetailViewController else { return }
@@ -65,16 +76,6 @@ class StudentsViewController: UIViewController {
         groupListTableView.reloadData()
     }
 
-    // MARK: - Presentation modal view
-    @IBAction private func addItemButton(_ sender: UIBarButtonItem) {
-        guard let addViewController = storyboard?
-            .instantiateViewController(withIdentifier: "AddItemViewController") as?
-            AddItemViewController else { return }
-        addViewController.specifySections(sections: sections)
-        addViewController.delegate = self
-        addViewController.modalPresentationStyle = .automatic
-        present(addViewController, animated: true, completion: nil)
-    }
     @objc func moveItem(_ sender: UIButton) {
         let point = sender.convert(CGPoint.zero, to: groupListTableView)
         guard let indexPath = groupListTableView.indexPathForRow(at: point) else { return }
@@ -98,7 +99,7 @@ extension StudentsViewController: UITableViewDataSource {
         guard let detailView = storyboard?
             .instantiateViewController(identifier: "ShowDetailViewController") as?
             ShowDetailViewController else { return }
-        var name = String()
+        var name: String!
         switch indexPath.section {
         case 0:
             name = students[indexPath.row]
@@ -165,6 +166,7 @@ extension StudentsViewController: UITableViewDelegate {
         header.textLabel?.textAlignment = .center
         header.textLabel?.font = .systemFont(ofSize: 17.0, weight: .light)
     }
+
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()

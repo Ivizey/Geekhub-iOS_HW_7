@@ -9,8 +9,10 @@
 import UIKit
 
 class AboutViewController: UIViewController {
+
     @IBOutlet weak private var geekImageView: UIImageView!
     @IBOutlet weak private var textView: UILabel!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         geekImageView.center.x -= view.bounds.width

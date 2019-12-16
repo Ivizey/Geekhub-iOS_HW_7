@@ -18,13 +18,6 @@ class EditDetailViewController: UIViewController {
 
         changeNameTextField.text = itemArray.name
     }
-    func getTextFromTetField() -> String {
-        if let text = changeNameTextField.text, changeNameTextField.hasText {
-            return text
-        } else {
-            return ""
-        }
-    }
 
     @IBAction private func saveChangesButton(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeANameInTheList"), object: self)
@@ -33,5 +26,13 @@ class EditDetailViewController: UIViewController {
 
     @IBAction private func goToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    func getTextFromTetField() -> String {
+        if let text = changeNameTextField.text, changeNameTextField.hasText {
+            return text
+        } else {
+            return ""
+        }
     }
 }

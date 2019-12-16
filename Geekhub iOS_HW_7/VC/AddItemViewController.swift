@@ -14,23 +14,25 @@ protocol AddItemDelegate: AnyObject {
 
 class AddItemViewController: UIViewController {
 
+    @IBOutlet private weak var inputTextField: UITextField!
+    @IBOutlet private weak var choiceStudents: UIPickerView!
+
     weak var delegate: AddItemDelegate?
     private var sectionSelection = 0
     private var sections: [String]!
 
-    @IBOutlet private weak var inputTextField: UITextField!
-    @IBOutlet private weak var choiceStudents: UIPickerView!
     @IBAction private func goToRoot(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-    }
-    func specifySections(sections: [String]) {
-        self.sections = sections
     }
 
     @IBAction private func addItemInListButton(_ sender: UIButton) {
         guard let item = inputTextField.text, inputTextField.hasText else { return }
         delegate?.addItem(item: item, section: sectionSelection)
         dismiss(animated: true, completion: nil)
+    }
+
+    func specifySections(sections: [String]) {
+        self.sections = sections
     }
 }
 
